@@ -5,7 +5,7 @@ tfidf = joblib.load("tfidf.pkl")
 classifier = joblib.load("classifier.pkl")
 regressor = joblib.load("regressor.pkl")
 
-st.title("AutoJudge 🧠")
+st.title("AutoJudge ")
 st.subheader("Predict Programming Problem Difficulty")
 
 st.write(
