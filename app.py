@@ -1,12 +1,10 @@
 import streamlit as st
 import joblib
 
-# Load saved models
 tfidf = joblib.load("tfidf.pkl")
 classifier = joblib.load("classifier.pkl")
 regressor = joblib.load("regressor.pkl")
 
-# Page title
 st.title("AutoJudge 🧠")
 st.subheader("Predict Programming Problem Difficulty")
 
@@ -15,14 +13,12 @@ st.write(
     "to get the difficulty class and score."
 )
 
-# Text input
 problem_text = st.text_area(
     "Problem Description",
     height=300,
     placeholder="Paste problem title, description, input/output here..."
 )
 
-# Predict button
 if st.button("Predict"):
     if problem_text.strip() == "":
         st.warning("Please enter a problem description.")

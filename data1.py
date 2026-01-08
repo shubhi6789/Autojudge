@@ -1,4 +1,3 @@
-# 1️⃣ Imports
 import json
 import pandas as pd
 
@@ -8,7 +7,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report
 
-# 2️⃣ Load JSONL data
 data = []
 with open("problems_data.jsonl", "r", encoding="utf-8") as f:
     for line in f:
@@ -16,7 +14,6 @@ with open("problems_data.jsonl", "r", encoding="utf-8") as f:
 
 df = pd.DataFrame(data)
 
-# 3️⃣ Convert sample_io (list) → text
 def sample_io_to_text(x):
     if isinstance(x, list):
         return " ".join(
@@ -27,7 +24,6 @@ def sample_io_to_text(x):
 
 df["sample_io_text"] = df["sample_io"].apply(sample_io_to_text)
 
-# 4️⃣ Create full_text
 df["full_text"] = (
     df["title"].fillna("") + " " +
     df["description"].fillna("") + " " +
@@ -36,10 +32,8 @@ df["full_text"] = (
     df["sample_io_text"].fillna("")
 )
 
-# Text length
 df["text_length"] = df["full_text"].apply(len)
 
-# Keyword-based features
 keywords = [
     "graph", "tree", "dp", "dynamic programming",
     "greedy", "binary search", "segment tree",
@@ -49,15 +43,12 @@ keywords = [
 for kw in keywords:
     df[f"kw_{kw}"] = df["full_text"].str.lower().str.count(kw)
 
-# Constraint indicator (e.g., 10^5, 10^6)
 df["has_constraints"] = df["full_text"].str.contains(r"10\^", regex=True).astype(int)
 
 
-# 5️⃣ Prepare inputs & labels
 X_text = df["full_text"]
 y_class = df["problem_class"]
 
-# 6️⃣ TF-IDF
 tfidf = TfidfVectorizer(
     max_features=5000,
     ngram_range=(1, 2),
@@ -72,19 +63,15 @@ numeric_features = df[
 
 
 
-# 7️⃣ Train-test split
 X_train, X_test, y_train, y_test = train_test_split(
     X_tfidf, y_class,
     test_size=0.2,
     random_state=42,
     stratify=y_class
 )
-
-# 8️⃣ Train classifier
 model = LinearSVC(class_weight="balanced")
 model.fit(X_train, y_train)
 
-# 9️⃣ Evaluate
 pred = model.predict(X_test)
 print("Accuracy:", accuracy_score(y_test, pred))
 print(classification_report(y_test, pred))
