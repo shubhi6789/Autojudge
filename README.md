@@ -90,10 +90,12 @@ pip install -r requirements.txt
 ``` bash
 python data.py
 ```
+(data1.py and data2.py are using different models to compare performances)
 ### 3️⃣ Run the web application
 ``` bash
 python -m streamlit run app.py
 ```
+---
 ## 🌐 Web Interface Explanation
 
 The project includes a simple and interactive **Streamlit web interface** to demonstrate the working of the trained models.
@@ -120,6 +122,7 @@ Once the user clicks the predict button, the interface displays:
 
 The web interface allows users to easily test and visualize model predictions without interacting directly with the code.
 
+---
 **Name:** Shubhi Gupta
 
 **Enrollment No:** 24116093
@@ -127,4 +130,5 @@ The web interface allows users to easily test and visualize model predictions wi
 **Batch & Year:** ECE 2Y
 
 **Email ID:** shubhi_g@ece.iitr.ac.in
+
 
