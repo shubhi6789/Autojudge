@@ -260,10 +260,24 @@ Once the user clicks the predict button, the interface displays:
 - No retraining occurs during runtime; all predictions are performed using saved trained models.
 
 The web interface allows users to easily test and visualize model predictions without interacting directly with the code.
-
+---
+### Demo video link
+``` bash
+https://drive.google.com/file/d/18bPi6232JH2sdCjzHX3pU1lkJMzHOWwD/view?usp=drive_link
+```
+---
+### record.pdf
+``` bash
+https://drive.google.com/file/d/1l6UqueUhgdumwGmD_wdFK0F8_Zt2eLD3/view?usp=drivesdk
+```
+---
 **Name:** Shubhi Gupta  
+
 **Enrollment No:** 24116093
+
 **Batch & Year:** ECE 2Y
+
 **Email ID:** shubhi_g@ece.iitr.ac.in
 
 >>>>>>> Stashed changes
+
